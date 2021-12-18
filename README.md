@@ -1,8 +1,10 @@
 # Team-Foxtrot
 
-Lab order automation  
+##### Mila, Swathi, Tanja
 
-Description 
+## Lab order automation  
+
+#### Description 
 
 Our virtual lab MiSwaTa is highly automated from prescription to invoice.  
 
@@ -19,23 +21,21 @@ The master data for the registered health insurances is saved in an additional G
 If at any time the doctor would like to check the status of the order, they can use our chatbot application. To identify the order in our system, the doctor is asked to supply the patient’s first name, last name and date of birth. 
 
 
-Business Process Flow: 
+#### Business Process Flow: 
 
 The lab administrator starts the Camunda Instance. The process flow will automatically check the Google Sheet “LabOrder” for any open order. Then the order status is updated to “received” and the lab technician can add the lab results via Camunda. Afterwards the results are checked in a DMN table and annotated with “OK” or “notOK” depending on the normal range for the specific tests (like Cholesterol). The status is changed to “analysis completed” and the summary of the results are reported via email to the doctor. Depending on the type of the invoice (health insurance or patient) the bill is created and sent to the corresponding email address. The status of the order is changed to “in billing”. After a final manual check of the payments, the process is completed and the order goes to status “completed”. 
 
 
-Roadmap 
-
-- add more lab tests
-
-
-
-Authors and acknowledgment 
+#### Authors and acknowledgment 
 
 Thank you to the DigiBP lecturers for the hands-on lectures and especially Charuta for her help with our project.  
 
-google form: https://docs.google.com/forms/d/1IB_glcX78C7KSul5MwQc4F-CVKiN6Pmy_nnucZAWbok/edit#responses
+#### Resources
 
-google sheet: https://docs.google.com/spreadsheets/d/1jH9_oCoUMZemPrcxkbj0RxjJfH4lyrs9BMG9oCypBBw/edit?resourcekey#gid=1840508038
+[Prescription Order Form](https://docs.google.com/forms/d/e/1FAIpQLSfQs8cGd2bKQF_u6yinasf9VX3rH8FfdpuefcL9ssI7bTVTCA/viewform?usp=sf_link)
 
-chatbot: https://dialogflow.cloud.google.com/#/agent/statuscheck-9psw/editIntent/e7da8001-5019-4a76-969e-83c3cf0bf38a/
+[Form Admin mode](https://docs.google.com/forms/d/1IB_glcX78C7KSul5MwQc4F-CVKiN6Pmy_nnucZAWbok/edit)
+
+[Lab Order Queue](https://docs.google.com/spreadsheets/d/1jH9_oCoUMZemPrcxkbj0RxjJfH4lyrs9BMG9oCypBBw/edit?usp=sharing)
+
+[Status Check Chatbot](https://dialogflow.cloud.google.com/#/agent/statuscheck-9psw/editIntent/e7da8001-5019-4a76-969e-83c3cf0bf38a/)
