@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="Definitions_1frbjw5" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.10.0">
+  <decision id="checkResults" name="Check">
+    <decisionTable id="DecisionTable_0vezekp" hitPolicy="FIRST">
+      <input id="InputClause_12drilj" label="Test Albumin">
+        <inputExpression id="LiteralExpression_0og0k35" typeRef="string">
+          <text>testAlbumin</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1ifs87l" label="Test Cholesterol">
+        <inputExpression id="LiteralExpression_1u6iy2l" typeRef="string">
+          <text>testCholesterol</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0at7rt8" label="Test Sodium">
+        <inputExpression id="LiteralExpression_0kjsbsw" typeRef="string">
+          <text>testSodium</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_028o2iz" label="Test Ferritin">
+        <inputExpression id="LiteralExpression_0g3wl1x" typeRef="string">
+          <text>testFerritin</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1ph4f4d" label="Test Glucose">
+        <inputExpression id="LiteralExpression_15kzk9c" typeRef="string">
+          <text>testGlucose</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1mtwpm4" label="Result Albumin">
+        <inputExpression id="LiteralExpression_0he0cip" typeRef="double">
+          <text>resultAlbumin</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1jd42mb" label="Result Cholesterol">
+        <inputExpression id="LiteralExpression_12tgb9a" typeRef="double">
+          <text>resultCholesterol</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0ei50ii" label="Result Sodium">
+        <inputExpression id="LiteralExpression_11y4eh5" typeRef="double">
+          <text>resultSodium</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_09ycdyn" label="Result Ferritin">
+        <inputExpression id="LiteralExpression_0p89bk6" typeRef="double">
+          <text>resultFerritin</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_05fyrhf" label="Result Glucose">
+        <inputExpression id="LiteralExpression_0jfjsmb" typeRef="double">
+          <text>resultGlucose</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1ylttxy" name="checkResult" typeRef="string">
+        <outputValues id="UnaryTests_1vc23e3">
+          <text>"notOk","OK"</text>
+        </outputValues>
+      </output>
+      <rule id="DecisionRule_05hm4kt">
+        <inputEntry id="UnaryTests_0e78ktp">
+          <text>"Albumin"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1d0x5fh">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11wascv">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03msy0g">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vmr9jj">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vxex9y">
+          <text>&gt;=46</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10rf1c4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ugisqr">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0y1k7zc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11yv2ty">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_04kbc5o">
+          <text>"notOk"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0zbp6qk">
+        <inputEntry id="UnaryTests_06bm3u7">
+          <text>"Albumin"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0p8ajmo">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0dyvpwc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_02mqlrj">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1e2hk7y">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0uj2pi3">
+          <text>&lt;=31</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ei2ulk">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1sm87r7">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1cxndlb">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1in8k2r">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1jlfbzs">
+          <text>"notOk"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0kp9f0g">
+        <inputEntry id="UnaryTests_1171n99">
+          <text>"Albumin"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0dgngyt">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14voy09">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_012k3xl">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0sqhn5x">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0pow616">
+          <text>[32..46]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0gwyg2u">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0501b0r">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1oy58zw">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vdvt07">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1n4gznb">
+          <text>"OK"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0aq6apx">
+        <description></description>
+        <inputEntry id="UnaryTests_0so58ci">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hchwvt">
+          <text>"Cholesterol"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0bxcqmy">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1bj7qb3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zd3pjs">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0tcfqy5">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1noc7pm">
+          <text>&gt;=5</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0iyxll0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0xz6th3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1h6w6li">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0v3n6nj">
+          <text>"notOk"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1qyrc8o">
+        <description></description>
+        <inputEntry id="UnaryTests_05r11ul">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0csyexw">
+          <text>"Cholesterol"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1bt8em7">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0dhpivf">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0cd8mqo">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0e750e8">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1kmemil">
+          <text>&lt;5</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_115qozd">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1iiovj7">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_055tsxz">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_185wxyk">
+          <text>"OK"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1anzuhz">
+        <inputEntry id="UnaryTests_0g65f18">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07hfs2w">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zwx6yx">
+          <text>"Sodium"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0madsdk">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0t83f50">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1sx2wbm">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0tnq3ar">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0l502cm">
+          <text>&lt;=131</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1glj6ps">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0uwybx2">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0zquamd">
+          <text>"notOk"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_19vgi3i">
+        <inputEntry id="UnaryTests_1x9mexc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18ooytj">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04sujsk">
+          <text>"Sodium"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11kllh7">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14c0zz3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07cm7up">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1pjrp3n">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07tf0gh">
+          <text>&gt;=147</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0oynt3j">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0f59krp">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ed3zml">
+          <text>"notOk"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_019co8y">
+        <inputEntry id="UnaryTests_0tlo392">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lrhnb0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10zj3j3">
+          <text>"Sodium"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17htxvo">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lhpr8f">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_045b2ve">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0cimvu2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0djm5id">
+          <text>[132..146]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1n1wcwe">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10q1drs">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_07m47cf">
+          <text>"OK"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_09gje5n">
+        <inputEntry id="UnaryTests_0c5wva8">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0sir9dk">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10i2fr0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0g4oscj">
+          <text>"Ferritin"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ncumu2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1pu5lj5">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1pdmom7">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xn2jey">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0xo4smc">
+          <text>&lt;=29</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0g76yss">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1lbqc5w">
+          <text>"notOk"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0jrr00j">
+        <inputEntry id="UnaryTests_0imln2y">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12wem7j">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jyznn4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01jaexf">
+          <text>"Ferritin"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0q3gu9g">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rdlitx">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wlx6wp">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qsi1dn">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0otnxui">
+          <text>&gt;=321</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04qwc4b">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0w9uwqd">
+          <text>"notOk"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1o6skd4">
+        <inputEntry id="UnaryTests_0esn1x5">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17etwxm">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ulztgj">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wbvlkw">
+          <text>"Ferritin"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0drt7ef">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0uxmksi">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14jofvt">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1f6dnyu">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1plhx0n">
+          <text>[30..320]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ejjeyp">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0om4adw">
+          <text>"OK"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_02exau2">
+        <inputEntry id="UnaryTests_1dbo7wj">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0gfkc2y">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09xrnk8">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09fokhp">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03pqkvz">
+          <text>"Glucose"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1l8qjcu">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wjpzse">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1tak3nk">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1l1c15j">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nbjhzh">
+          <text>&lt;=3.8</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_17o6iba">
+          <text>"notOk"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_134zcol">
+        <inputEntry id="UnaryTests_03ager6">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0eii9eb">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ozwv97">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1mav9nn">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_181a74d">
+          <text>"Glucose"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lc6tmm">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0b3pjwm">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xvfkxc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11eu1tc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1sjsd9z">
+          <text>&gt;=6.2</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1a2zvw3">
+          <text>"notOk"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1o11vk9">
+        <description></description>
+        <inputEntry id="UnaryTests_1yp1ytb">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0kbr6x5">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0hqtyqt">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1bt2poj">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18lk21j">
+          <text>"Glucose"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1o5quvg">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lpoeq8">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0tx6nyt">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1opko30">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0tu5fh0">
+          <text>[3.9..6.1]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1b6syl5">
+          <text>"OK"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="checkResults">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
