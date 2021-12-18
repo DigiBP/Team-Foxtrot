@@ -1,0 +1,957 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0kiibqv" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.10.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
+  <bpmn:collaboration id="Collaboration_0gfcn7i">
+    <bpmn:participant id="Participant_14vww5o" name="Lab Organisation" processRef="LabProcess">
+      <bpmn:participantMultiplicity />
+    </bpmn:participant>
+    <bpmn:participant id="Participant_1qv7ij9" name="Doctor" />
+    <bpmn:participant id="Participant_01kji1n" name="Insurance" />
+    <bpmn:participant id="Participant_111plzh" name="Patient" />
+    <bpmn:messageFlow id="Flow_0n15nx8" sourceRef="Participant_1qv7ij9" targetRef="PrescriptionRecieved" />
+    <bpmn:messageFlow id="Flow_0i2vns8" sourceRef="Activity_0layi00" targetRef="Participant_1qv7ij9" />
+    <bpmn:messageFlow id="Flow_1eg3r5w" sourceRef="Activity_00z82ls" targetRef="Participant_1qv7ij9" />
+    <bpmn:messageFlow id="Flow_1q8pp3f" sourceRef="Activity_0chx018" targetRef="Participant_01kji1n" />
+    <bpmn:messageFlow id="Flow_14myucx" sourceRef="Activity_1jh0gzz" targetRef="Participant_111plzh" />
+  </bpmn:collaboration>
+  <bpmn:process id="LabProcess" isExecutable="true">
+    <bpmn:laneSet id="LaneSet_0x3z3f3">
+      <bpmn:lane id="Lane_0jvz6tg" name="Lab Scientist">
+        <bpmn:flowNodeRef>Activity_1lzngm7</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_1uyi2kx</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_0z8ig8u</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_1h09yco</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_1ud7li2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_04kq5de</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1tfqwe0</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_142598r</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_10wfgm8</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0jmmyhv</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0wunize</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_1e73tg4</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_18d65lv</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_1s9wnr7</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_0kwqyq9</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_092j603</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_1mfpvaf</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_0sdmunl</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0dwennu</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1aqt8fu</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_00z82ls</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_1dhmw9e" name="Automation">
+        <bpmn:flowNodeRef>Activity_1ec38gs</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_1drf080</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_1xa23y0</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1v53jau</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>PrescriptionRecieved</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0layi00</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_1lq3rt7" name="Accountent">
+        <bpmn:flowNodeRef>Gateway_1mt7dw8</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_0c7fup2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0chx018</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1jh0gzz</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_13g8s2x</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0718j1p</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_1hgfj1c</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0hxigeh</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0j1pnri</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:sequenceFlow id="Flow_1pjxpy5" sourceRef="Activity_1v53jau" targetRef="Gateway_1xa23y0" />
+    <bpmn:sequenceFlow id="Flow_0vevh7b" name="yes" sourceRef="Gateway_1xa23y0" targetRef="Activity_0dwennu">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${complete == "Complete"}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1ya0v3h" name="no" sourceRef="Gateway_1xa23y0" targetRef="Activity_0layi00">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${complete=="notComplete"}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0dw2wok" sourceRef="Activity_0layi00" targetRef="Event_1drf080" />
+    <bpmn:sequenceFlow id="Flow_194ua6w" name="Bill to Insurance" sourceRef="Gateway_1mt7dw8" targetRef="Activity_0chx018">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${invoiceType =="Health Insurance"}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0o8666m" name="Bill to Patient" sourceRef="Gateway_1mt7dw8" targetRef="Activity_1jh0gzz">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${invoiceType =="Patient"}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0x80cmi" sourceRef="Activity_0chx018" targetRef="Gateway_0c7fup2" />
+    <bpmn:sequenceFlow id="Flow_15i9jmj" sourceRef="Activity_1jh0gzz" targetRef="Gateway_0c7fup2" />
+    <bpmn:sequenceFlow id="Flow_1sojyr7" sourceRef="Gateway_0c7fup2" targetRef="Activity_0718j1p">
+      <bpmn:extensionElements>
+        <camunda:executionListener delegateExpression="${notify}" event="take">
+          <camunda:field name="URL">
+            <camunda:string>https://hook.integromat.com/np693vyhov5sbh4ee6zedr9omfawpo0e</camunda:string>
+          </camunda:field>
+        </camunda:executionListener>
+      </bpmn:extensionElements>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1hoavbt" sourceRef="Activity_13g8s2x" targetRef="Activity_0hxigeh">
+      <bpmn:extensionElements>
+        <camunda:executionListener delegateExpression="${notify}" event="take">
+          <camunda:field name="URL">
+            <camunda:string>https://hook.integromat.com/np693vyhov5sbh4ee6zedr9omfawpo0e</camunda:string>
+          </camunda:field>
+        </camunda:executionListener>
+      </bpmn:extensionElements>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_10odevp" sourceRef="PrescriptionRecieved" targetRef="Activity_1ec38gs">
+      <bpmn:extensionElements>
+        <camunda:executionListener delegateExpression="${notify}" event="take">
+          <camunda:field name="URL">
+            <camunda:string>https://hook.integromat.com/2pn6mmw2tz1bvux148dwl88fh5wkf1wg</camunda:string>
+          </camunda:field>
+        </camunda:executionListener>
+      </bpmn:extensionElements>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1ylcbua" sourceRef="Activity_1ec38gs" targetRef="Activity_1v53jau" />
+    <bpmn:serviceTask id="Activity_1ec38gs" name="Get Order" camunda:type="external" camunda:topic="getOrder">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:outputParameter name="healthInsurance">${healthInsurance}</camunda:outputParameter>
+          <camunda:outputParameter name="requestorCode">${requestorCode}</camunda:outputParameter>
+          <camunda:outputParameter name="Sodium">${Sodium}</camunda:outputParameter>
+          <camunda:outputParameter name="Glucose">${Glucose}</camunda:outputParameter>
+          <camunda:outputParameter name="Ferritin">${Ferritin}</camunda:outputParameter>
+          <camunda:outputParameter name="Cholesterol">${Cholesterol}</camunda:outputParameter>
+          <camunda:outputParameter name="Albumin">${Albumin}</camunda:outputParameter>
+          <camunda:outputParameter name="processId">${processId}</camunda:outputParameter>
+          <camunda:outputParameter name="invoiceType">${invoiceType}</camunda:outputParameter>
+          <camunda:outputParameter name="eMail">${eMail}</camunda:outputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_10odevp</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ylcbua</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="Event_1drf080" name="Prescription closed">
+      <bpmn:incoming>Flow_0dw2wok</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:exclusiveGateway id="Gateway_1xa23y0" name="Information complete?">
+      <bpmn:incoming>Flow_1pjxpy5</bpmn:incoming>
+      <bpmn:outgoing>Flow_0vevh7b</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1ya0v3h</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:businessRuleTask id="Activity_1v53jau" name="Check Prescription" camunda:resultVariable="check" camunda:decisionRef="Decision_0srzs5r" camunda:mapDecisionResult="singleResult">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="eMail">${eMail}</camunda:inputParameter>
+          <camunda:inputParameter name="invoiceType">${invoiceType}</camunda:inputParameter>
+          <camunda:outputParameter name="complete">${check.complete}</camunda:outputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1ylcbua</bpmn:incoming>
+      <bpmn:outgoing>Flow_1pjxpy5</bpmn:outgoing>
+    </bpmn:businessRuleTask>
+    <bpmn:startEvent id="PrescriptionRecieved" name="Prescription recieved">
+      <bpmn:outgoing>Flow_10odevp</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:serviceTask id="Activity_0layi00" name="Request further Information" camunda:type="external" camunda:topic="sendCancellation">
+      <bpmn:extensionElements>
+        <camunda:executionListener delegateExpression="${notify}" event="start">
+          <camunda:field name="URL">
+            <camunda:string>https://hook.integromat.com/0husu5y61ul4hfjfgg5121fryi6c7977</camunda:string>
+          </camunda:field>
+        </camunda:executionListener>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1ya0v3h</bpmn:incoming>
+      <bpmn:outgoing>Flow_0dw2wok</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_06ckm99" sourceRef="Activity_1tfqwe0" targetRef="Gateway_0kwqyq9" />
+    <bpmn:sequenceFlow id="Flow_095jgk3" sourceRef="Gateway_1ud7li2" targetRef="Activity_1tfqwe0">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${Glucose=="Glucose"}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1yfhv9r" sourceRef="Gateway_04kq5de" targetRef="Activity_142598r">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${Sodium=="Sodium"}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1jyhnla" sourceRef="Gateway_1uyi2kx" targetRef="Gateway_1ud7li2" />
+    <bpmn:sequenceFlow id="Flow_09d4j0e" sourceRef="Activity_1lzngm7" targetRef="Gateway_1uyi2kx" />
+    <bpmn:sequenceFlow id="Flow_10p7i7o" sourceRef="Gateway_1uyi2kx" targetRef="Gateway_0z8ig8u" />
+    <bpmn:sequenceFlow id="Flow_1x2w3a4" sourceRef="Gateway_1uyi2kx" targetRef="Gateway_1e73tg4" />
+    <bpmn:sequenceFlow id="Flow_04hgavj" sourceRef="Gateway_1uyi2kx" targetRef="Gateway_18d65lv" />
+    <bpmn:sequenceFlow id="Flow_1q8vo4z" sourceRef="Gateway_0z8ig8u" targetRef="Activity_10wfgm8">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${Ferritin=="Ferritin"}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_09qz14d" sourceRef="Gateway_1e73tg4" targetRef="Activity_0jmmyhv">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${Cholesterol=="Cholesterol"}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1m4o87s" sourceRef="Gateway_18d65lv" targetRef="Activity_0wunize">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${Albumin=="Albumin"}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_093ea30" sourceRef="Activity_10wfgm8" targetRef="Gateway_092j603" />
+    <bpmn:sequenceFlow id="Flow_1o14mur" sourceRef="Activity_0jmmyhv" targetRef="Gateway_1mfpvaf" />
+    <bpmn:sequenceFlow id="Flow_1wn412p" sourceRef="Activity_0wunize" targetRef="Gateway_0sdmunl" />
+    <bpmn:sequenceFlow id="Flow_0ui1g7w" sourceRef="Gateway_18d65lv" targetRef="Gateway_0sdmunl">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${Albumin==""}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_053ooj3" sourceRef="Gateway_1e73tg4" targetRef="Gateway_1mfpvaf">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${Cholesterol==""}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1wwkhf4" sourceRef="Gateway_0z8ig8u" targetRef="Gateway_092j603">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${Ferritin==""}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0dkbr2b" sourceRef="Gateway_1ud7li2" targetRef="Gateway_0kwqyq9">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${Glucose==""}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1cv2zjf" sourceRef="Gateway_04kq5de" targetRef="Gateway_1s9wnr7">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${Sodium==""}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:userTask id="Activity_1lzngm7" name="Analyze Sample">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="complete" label="Prescription Complete?" type="string">
+            <camunda:validation>
+              <camunda:constraint name="readonly" />
+            </camunda:validation>
+          </camunda:formField>
+          <camunda:formField id="resultAlbumin" label="Measured Value (Albumin)" type="string" />
+          <camunda:formField id="resultCholesterol" label="Measured Value (Cholesterol)" type="string" />
+          <camunda:formField id="resultFerritin" label="Measured Value (Ferritin)" type="string" />
+          <camunda:formField id="resultGlucose" label="Measured Value (Glucose)" type="string" />
+          <camunda:formField id="resultSodium" label="Measured Value (Sodium)" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0tbei6s</bpmn:incoming>
+      <bpmn:outgoing>Flow_09d4j0e</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:parallelGateway id="Gateway_1uyi2kx">
+      <bpmn:incoming>Flow_09d4j0e</bpmn:incoming>
+      <bpmn:outgoing>Flow_1jyhnla</bpmn:outgoing>
+      <bpmn:outgoing>Flow_10p7i7o</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1x2w3a4</bpmn:outgoing>
+      <bpmn:outgoing>Flow_04hgavj</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1h09o7r</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:exclusiveGateway id="Gateway_0z8ig8u">
+      <bpmn:incoming>Flow_10p7i7o</bpmn:incoming>
+      <bpmn:outgoing>Flow_1q8vo4z</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1wwkhf4</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:parallelGateway id="Gateway_1h09yco">
+      <bpmn:incoming>Flow_05t25mm</bpmn:incoming>
+      <bpmn:incoming>Flow_0sx75kb</bpmn:incoming>
+      <bpmn:incoming>Flow_0cjpan1</bpmn:incoming>
+      <bpmn:incoming>Flow_0rlt937</bpmn:incoming>
+      <bpmn:incoming>Flow_0kbe57t</bpmn:incoming>
+      <bpmn:outgoing>Flow_1aciskr</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:exclusiveGateway id="Gateway_1ud7li2">
+      <bpmn:incoming>Flow_1jyhnla</bpmn:incoming>
+      <bpmn:outgoing>Flow_095jgk3</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0dkbr2b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="Gateway_04kq5de">
+      <bpmn:incoming>Flow_1h09o7r</bpmn:incoming>
+      <bpmn:outgoing>Flow_1yfhv9r</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1cv2zjf</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:businessRuleTask id="Activity_1tfqwe0" name="Check Glucose" camunda:resultVariable="checkResult" camunda:decisionRef="checkResults" camunda:mapDecisionResult="singleResult">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="resultSodium">
+            <camunda:script scriptFormat="JavaScript">Number(resultSodium)</camunda:script>
+          </camunda:inputParameter>
+          <camunda:inputParameter name="resultGlucose">
+            <camunda:script scriptFormat="JavaScript">Number(resultGlucose)</camunda:script>
+          </camunda:inputParameter>
+          <camunda:inputParameter name="resultFerritin">
+            <camunda:script scriptFormat="JavaScript">Number(resultFerritin)</camunda:script>
+          </camunda:inputParameter>
+          <camunda:inputParameter name="resultCholesterol">
+            <camunda:script scriptFormat="JavaScript">Number(resultCholesterol)</camunda:script>
+          </camunda:inputParameter>
+          <camunda:inputParameter name="resultAlbumin">
+            <camunda:script scriptFormat="JavaScript">Number(resultAlbumin)</camunda:script>
+          </camunda:inputParameter>
+          <camunda:inputParameter name="testSodium">${""}</camunda:inputParameter>
+          <camunda:inputParameter name="testGlucose">${Glucose}</camunda:inputParameter>
+          <camunda:inputParameter name="testFerritin">${""}</camunda:inputParameter>
+          <camunda:inputParameter name="testCholesterol">${""}</camunda:inputParameter>
+          <camunda:inputParameter name="testAlbumin">${""}</camunda:inputParameter>
+          <camunda:outputParameter name="checkGlucose">${checkResult.checkResult}</camunda:outputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_095jgk3</bpmn:incoming>
+      <bpmn:outgoing>Flow_06ckm99</bpmn:outgoing>
+    </bpmn:businessRuleTask>
+    <bpmn:businessRuleTask id="Activity_142598r" name="Check Sodium" camunda:resultVariable="checkResult" camunda:decisionRef="checkResults" camunda:mapDecisionResult="singleResult">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="testGlucose">${""}</camunda:inputParameter>
+          <camunda:inputParameter name="resultSodium">
+            <camunda:script scriptFormat="JavaScript">Number(resultSodium)</camunda:script>
+          </camunda:inputParameter>
+          <camunda:inputParameter name="resultGlucose">
+            <camunda:script scriptFormat="JavaScript">Number(resultGlucose)</camunda:script>
+          </camunda:inputParameter>
+          <camunda:inputParameter name="resultFerritin">
+            <camunda:script scriptFormat="JavaScript">Number(resultFerritin)</camunda:script>
+          </camunda:inputParameter>
+          <camunda:inputParameter name="resultCholesterol">
+            <camunda:script scriptFormat="JavaScript">Number(resultCholesterol)</camunda:script>
+          </camunda:inputParameter>
+          <camunda:inputParameter name="resultAlbumin">
+            <camunda:script scriptFormat="JavaScript">Number(resultAlbumin)</camunda:script>
+          </camunda:inputParameter>
+          <camunda:inputParameter name="testSodium">${Sodium}</camunda:inputParameter>
+          <camunda:inputParameter name="testFerritin">""</camunda:inputParameter>
+          <camunda:inputParameter name="testCholesterol">""</camunda:inputParameter>
+          <camunda:inputParameter name="testAlbumin">""</camunda:inputParameter>
+          <camunda:outputParameter name="checkSodium">${checkResult.checkResult}</camunda:outputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1yfhv9r</bpmn:incoming>
+      <bpmn:outgoing>Flow_0a91zs8</bpmn:outgoing>
+    </bpmn:businessRuleTask>
+    <bpmn:businessRuleTask id="Activity_10wfgm8" name="Check Ferritin" camunda:resultVariable="checkResult" camunda:decisionRef="checkResults" camunda:mapDecisionResult="singleResult">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="resultSodium">
+            <camunda:script scriptFormat="JavaScript">Number(resultSodium)</camunda:script>
+          </camunda:inputParameter>
+          <camunda:inputParameter name="resultGlucose">
+            <camunda:script scriptFormat="JavaScript">Number(resultGlucose)</camunda:script>
+          </camunda:inputParameter>
+          <camunda:inputParameter name="resultFerritin">
+            <camunda:script scriptFormat="JavaScript">Number(resultFerritin)</camunda:script>
+          </camunda:inputParameter>
+          <camunda:inputParameter name="resultCholesterol">
+            <camunda:script scriptFormat="JavaScript">Number(resultCholesterol)</camunda:script>
+          </camunda:inputParameter>
+          <camunda:inputParameter name="resultAlbumin">
+            <camunda:script scriptFormat="JavaScript">Number(resultAlbumin)</camunda:script>
+          </camunda:inputParameter>
+          <camunda:inputParameter name="testSodium">${""}</camunda:inputParameter>
+          <camunda:inputParameter name="testGlucose">${""}</camunda:inputParameter>
+          <camunda:inputParameter name="testFerritin">${Ferritin}</camunda:inputParameter>
+          <camunda:inputParameter name="testCholesterol">${""}</camunda:inputParameter>
+          <camunda:inputParameter name="testAlbumin">${""}</camunda:inputParameter>
+          <camunda:outputParameter name="checkFerritin">${checkResult.checkResult}</camunda:outputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1q8vo4z</bpmn:incoming>
+      <bpmn:outgoing>Flow_093ea30</bpmn:outgoing>
+    </bpmn:businessRuleTask>
+    <bpmn:businessRuleTask id="Activity_0jmmyhv" name="Check Cholesterol" camunda:resultVariable="checkResult" camunda:decisionRef="checkResults" camunda:mapDecisionResult="singleResult">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="resultSodium">
+            <camunda:script scriptFormat="JavaScript">Number(resultSodium)</camunda:script>
+          </camunda:inputParameter>
+          <camunda:inputParameter name="resultGlucose">
+            <camunda:script scriptFormat="JavaScript">Number(resultGlucose)</camunda:script>
+          </camunda:inputParameter>
+          <camunda:inputParameter name="resultFerritin">
+            <camunda:script scriptFormat="JavaScript">Number(resultFerritin)</camunda:script>
+          </camunda:inputParameter>
+          <camunda:inputParameter name="resultCholesterol">
+            <camunda:script scriptFormat="JavaScript">Number(resultCholesterol)</camunda:script>
+          </camunda:inputParameter>
+          <camunda:inputParameter name="resultAlbumin">
+            <camunda:script scriptFormat="JavaScript">Number(resultAlbumin)</camunda:script>
+          </camunda:inputParameter>
+          <camunda:inputParameter name="testSodium">${""}</camunda:inputParameter>
+          <camunda:inputParameter name="testGlucose">${""}</camunda:inputParameter>
+          <camunda:inputParameter name="testFerritin">${""}</camunda:inputParameter>
+          <camunda:inputParameter name="testCholesterol">${Cholesterol}</camunda:inputParameter>
+          <camunda:inputParameter name="testAlbumin">${""}</camunda:inputParameter>
+          <camunda:outputParameter name="checkCholesterol">${checkResult.checkResult}</camunda:outputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_09qz14d</bpmn:incoming>
+      <bpmn:outgoing>Flow_1o14mur</bpmn:outgoing>
+    </bpmn:businessRuleTask>
+    <bpmn:businessRuleTask id="Activity_0wunize" name="Check Albumin" camunda:resultVariable="checkResult" camunda:decisionRef="checkResults" camunda:mapDecisionResult="singleResult">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="resultSodium">
+            <camunda:script scriptFormat="JavaScript">Number(resultSodium)</camunda:script>
+          </camunda:inputParameter>
+          <camunda:inputParameter name="resultGlucose">
+            <camunda:script scriptFormat="JavaScript">Number(resultGlucose)</camunda:script>
+          </camunda:inputParameter>
+          <camunda:inputParameter name="resultFerritin">
+            <camunda:script scriptFormat="JavaScript">Number(resultFerritin)</camunda:script>
+          </camunda:inputParameter>
+          <camunda:inputParameter name="resultCholesterol">
+            <camunda:script scriptFormat="JavaScript">Number(resultCholesterol)</camunda:script>
+          </camunda:inputParameter>
+          <camunda:inputParameter name="resultAlbumin">
+            <camunda:script scriptFormat="JavaScript">Number(resultAlbumin)</camunda:script>
+          </camunda:inputParameter>
+          <camunda:inputParameter name="testSodium">${""}</camunda:inputParameter>
+          <camunda:inputParameter name="testGlucose">${""}</camunda:inputParameter>
+          <camunda:inputParameter name="testFerritin">${""}</camunda:inputParameter>
+          <camunda:inputParameter name="testCholesterol">${""}</camunda:inputParameter>
+          <camunda:inputParameter name="testAlbumin">${Albumin}</camunda:inputParameter>
+          <camunda:outputParameter name="checkAlbumin">${checkResult.checkResult}</camunda:outputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1m4o87s</bpmn:incoming>
+      <bpmn:outgoing>Flow_1wn412p</bpmn:outgoing>
+    </bpmn:businessRuleTask>
+    <bpmn:exclusiveGateway id="Gateway_1e73tg4">
+      <bpmn:incoming>Flow_1x2w3a4</bpmn:incoming>
+      <bpmn:outgoing>Flow_09qz14d</bpmn:outgoing>
+      <bpmn:outgoing>Flow_053ooj3</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="Gateway_18d65lv">
+      <bpmn:incoming>Flow_04hgavj</bpmn:incoming>
+      <bpmn:outgoing>Flow_1m4o87s</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0ui1g7w</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0a91zs8" sourceRef="Activity_142598r" targetRef="Gateway_1s9wnr7" />
+    <bpmn:sequenceFlow id="Flow_1h09o7r" sourceRef="Gateway_1uyi2kx" targetRef="Gateway_04kq5de" />
+    <bpmn:sequenceFlow id="Flow_1aciskr" sourceRef="Gateway_1h09yco" targetRef="Activity_1aqt8fu">
+      <bpmn:extensionElements>
+        <camunda:executionListener delegateExpression="${notify}" event="take">
+          <camunda:field name="URL">
+            <camunda:string>https://hook.integromat.com/np693vyhov5sbh4ee6zedr9omfawpo0e</camunda:string>
+          </camunda:field>
+        </camunda:executionListener>
+      </bpmn:extensionElements>
+    </bpmn:sequenceFlow>
+    <bpmn:exclusiveGateway id="Gateway_1s9wnr7">
+      <bpmn:incoming>Flow_0a91zs8</bpmn:incoming>
+      <bpmn:incoming>Flow_1cv2zjf</bpmn:incoming>
+      <bpmn:outgoing>Flow_05t25mm</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_05t25mm" sourceRef="Gateway_1s9wnr7" targetRef="Gateway_1h09yco" />
+    <bpmn:exclusiveGateway id="Gateway_0kwqyq9">
+      <bpmn:incoming>Flow_06ckm99</bpmn:incoming>
+      <bpmn:incoming>Flow_0dkbr2b</bpmn:incoming>
+      <bpmn:outgoing>Flow_0sx75kb</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0sx75kb" sourceRef="Gateway_0kwqyq9" targetRef="Gateway_1h09yco" />
+    <bpmn:exclusiveGateway id="Gateway_092j603">
+      <bpmn:incoming>Flow_093ea30</bpmn:incoming>
+      <bpmn:incoming>Flow_1wwkhf4</bpmn:incoming>
+      <bpmn:outgoing>Flow_0cjpan1</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0cjpan1" sourceRef="Gateway_092j603" targetRef="Gateway_1h09yco" />
+    <bpmn:exclusiveGateway id="Gateway_1mfpvaf">
+      <bpmn:incoming>Flow_1o14mur</bpmn:incoming>
+      <bpmn:incoming>Flow_053ooj3</bpmn:incoming>
+      <bpmn:outgoing>Flow_0rlt937</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0rlt937" sourceRef="Gateway_1mfpvaf" targetRef="Gateway_1h09yco" />
+    <bpmn:exclusiveGateway id="Gateway_0sdmunl">
+      <bpmn:incoming>Flow_1wn412p</bpmn:incoming>
+      <bpmn:incoming>Flow_0ui1g7w</bpmn:incoming>
+      <bpmn:outgoing>Flow_0kbe57t</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0kbe57t" sourceRef="Gateway_0sdmunl" targetRef="Gateway_1h09yco" />
+    <bpmn:sequenceFlow id="Flow_0tbei6s" sourceRef="Activity_0dwennu" targetRef="Activity_1lzngm7" />
+    <bpmn:serviceTask id="Activity_0dwennu" name="Update Status" camunda:type="external" camunda:topic="updateStatus">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="orderStatus">ready for analysis</camunda:inputParameter>
+        </camunda:inputOutput>
+        <camunda:executionListener delegateExpression="${notify}" event="start">
+          <camunda:field name="URL">
+            <camunda:string>https://hook.integromat.com/np693vyhov5sbh4ee6zedr9omfawpo0e</camunda:string>
+          </camunda:field>
+        </camunda:executionListener>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0vevh7b</bpmn:incoming>
+      <bpmn:outgoing>Flow_0tbei6s</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="Gateway_1mt7dw8" name="Send Bill to?">
+      <bpmn:incoming>Flow_0ank57y</bpmn:incoming>
+      <bpmn:outgoing>Flow_194ua6w</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0o8666m</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="Gateway_0c7fup2">
+      <bpmn:incoming>Flow_0x80cmi</bpmn:incoming>
+      <bpmn:incoming>Flow_15i9jmj</bpmn:incoming>
+      <bpmn:outgoing>Flow_1sojyr7</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="Activity_0chx018" name="Send Bill to Insurance" camunda:type="external" camunda:topic="sendInvoiceHI">
+      <bpmn:extensionElements>
+        <camunda:executionListener delegateExpression="${notify}" event="start">
+          <camunda:field name="URL">
+            <camunda:string>https://hook.integromat.com/kbpkjepgy389l9edskjto01ikgit2m1m</camunda:string>
+          </camunda:field>
+        </camunda:executionListener>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_194ua6w</bpmn:incoming>
+      <bpmn:outgoing>Flow_0x80cmi</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_1jh0gzz" name="Send Bill to Patient" camunda:type="external" camunda:topic="sendInvoicePatient">
+      <bpmn:extensionElements>
+        <camunda:executionListener delegateExpression="${notify}" event="start">
+          <camunda:field name="URL">
+            <camunda:string>https://hook.integromat.com/tiv3x0syayatfp45sy4gbhdtwhmyjphd</camunda:string>
+          </camunda:field>
+        </camunda:executionListener>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0o8666m</bpmn:incoming>
+      <bpmn:outgoing>Flow_15i9jmj</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1r7g000" sourceRef="Activity_1aqt8fu" targetRef="Activity_00z82ls" />
+    <bpmn:serviceTask id="Activity_1aqt8fu" name="Update Status" camunda:type="external" camunda:topic="updateStatus">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="orderStatus">analysis completed</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1aciskr</bpmn:incoming>
+      <bpmn:outgoing>Flow_1r7g000</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="Activity_13g8s2x" name="Check Payment">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="orderPrice" label="Payment received" type="string">
+            <camunda:validation>
+              <camunda:constraint name="readonly" />
+            </camunda:validation>
+          </camunda:formField>
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0yyy7bq</bpmn:incoming>
+      <bpmn:outgoing>Flow_1hoavbt</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0yyy7bq" sourceRef="Activity_0718j1p" targetRef="Activity_13g8s2x" />
+    <bpmn:serviceTask id="Activity_0718j1p" name="Update Status" camunda:type="external" camunda:topic="updateStatus">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="orderStatus">in billing</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1sojyr7</bpmn:incoming>
+      <bpmn:outgoing>Flow_0yyy7bq</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="Event_1hgfj1c" name="Analysis&#10;finished">
+      <bpmn:incoming>Flow_095tlok</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:serviceTask id="Activity_0hxigeh" name="Update Status" camunda:type="external" camunda:topic="updateStatus">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="orderStatus">completed</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1hoavbt</bpmn:incoming>
+      <bpmn:outgoing>Flow_095tlok</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_095tlok" sourceRef="Activity_0hxigeh" targetRef="Event_1hgfj1c" />
+    <bpmn:serviceTask id="Activity_00z82ls" name="Send Result" camunda:type="external" camunda:topic="sendResult">
+      <bpmn:extensionElements>
+        <camunda:executionListener delegateExpression="${notify}" event="start">
+          <camunda:field name="URL">
+            <camunda:string>https://hook.integromat.com/tyiyymnrr8r6pithh3pd8e35qgc58de2</camunda:string>
+          </camunda:field>
+        </camunda:executionListener>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1r7g000</bpmn:incoming>
+      <bpmn:outgoing>Flow_19a7j35</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:businessRuleTask id="Activity_0j1pnri" name="Calculate Price" camunda:resultVariable="orderPrice" camunda:decisionRef="checkPrice" camunda:mapDecisionResult="singleResult">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="Sodium">${Sodium}</camunda:inputParameter>
+          <camunda:inputParameter name="Glucose">${Glucose}</camunda:inputParameter>
+          <camunda:inputParameter name="Ferritin">${Ferritin}</camunda:inputParameter>
+          <camunda:inputParameter name="fee">""</camunda:inputParameter>
+          <camunda:inputParameter name="Cholesterol">${Cholesterol}</camunda:inputParameter>
+          <camunda:inputParameter name="Albumin">${Albumin}</camunda:inputParameter>
+          <camunda:outputParameter name="orderPrice">${orderPrice.orderPrice}</camunda:outputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_19a7j35</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ank57y</bpmn:outgoing>
+    </bpmn:businessRuleTask>
+    <bpmn:sequenceFlow id="Flow_19a7j35" sourceRef="Activity_00z82ls" targetRef="Activity_0j1pnri" />
+    <bpmn:sequenceFlow id="Flow_0ank57y" sourceRef="Activity_0j1pnri" targetRef="Gateway_1mt7dw8" />
+  </bpmn:process>
+  <bpmn:message id="Message_1le48kc" />
+  <bpmn:message id="Message_15lwn1q" name="Message_31ijbr4" />
+  <bpmn:message id="Message_1m6zmnr" name="Message_1dpo1rc" />
+  <bpmn:message id="Message_0jteel7" name="Message_3545tdk" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0gfcn7i">
+      <bpmndi:BPMNShape id="Participant_14vww5o_di" bpmnElement="Participant_14vww5o" isHorizontal="true">
+        <dc:Bounds x="190" y="285" width="2401" height="1385" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_1lq3rt7_di" bpmnElement="Lane_1lq3rt7" isHorizontal="true">
+        <dc:Bounds x="220" y="1215" width="2371" height="455" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_1dhmw9e_di" bpmnElement="Lane_1dhmw9e" isHorizontal="true">
+        <dc:Bounds x="220" y="285" width="2371" height="276" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_0jvz6tg_di" bpmnElement="Lane_0jvz6tg" isHorizontal="true">
+        <dc:Bounds x="220" y="561" width="2371" height="654" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_095tlok_di" bpmnElement="Flow_095tlok">
+        <di:waypoint x="2390" y="1580" />
+        <di:waypoint x="2288" y="1580" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0yyy7bq_di" bpmnElement="Flow_0yyy7bq">
+        <di:waypoint x="2350" y="1410" />
+        <di:waypoint x="2410" y="1410" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1r7g000_di" bpmnElement="Flow_1r7g000">
+        <di:waypoint x="1110" y="860" />
+        <di:waypoint x="1320" y="860" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0tbei6s_di" bpmnElement="Flow_0tbei6s">
+        <di:waypoint x="300" y="690" />
+        <di:waypoint x="300" y="820" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0kbe57t_di" bpmnElement="Flow_0kbe57t">
+        <di:waypoint x="885" y="630" />
+        <di:waypoint x="940" y="630" />
+        <di:waypoint x="940" y="835" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0rlt937_di" bpmnElement="Flow_0rlt937">
+        <di:waypoint x="885" y="750" />
+        <di:waypoint x="940" y="750" />
+        <di:waypoint x="940" y="835" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0cjpan1_di" bpmnElement="Flow_0cjpan1">
+        <di:waypoint x="885" y="860" />
+        <di:waypoint x="915" y="860" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0sx75kb_di" bpmnElement="Flow_0sx75kb">
+        <di:waypoint x="885" y="980" />
+        <di:waypoint x="940" y="980" />
+        <di:waypoint x="940" y="885" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_05t25mm_di" bpmnElement="Flow_05t25mm">
+        <di:waypoint x="885" y="1110" />
+        <di:waypoint x="940" y="1110" />
+        <di:waypoint x="940" y="885" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1aciskr_di" bpmnElement="Flow_1aciskr">
+        <di:waypoint x="965" y="860" />
+        <di:waypoint x="1010" y="860" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1h09o7r_di" bpmnElement="Flow_1h09o7r">
+        <di:waypoint x="410" y="885" />
+        <di:waypoint x="410" y="1110" />
+        <di:waypoint x="485" y="1110" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0a91zs8_di" bpmnElement="Flow_0a91zs8">
+        <di:waypoint x="790" y="1110" />
+        <di:waypoint x="835" y="1110" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1cv2zjf_di" bpmnElement="Flow_1cv2zjf">
+        <di:waypoint x="510" y="1135" />
+        <di:waypoint x="510" y="1160" />
+        <di:waypoint x="860" y="1160" />
+        <di:waypoint x="860" y="1135" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0dkbr2b_di" bpmnElement="Flow_0dkbr2b">
+        <di:waypoint x="510" y="1005" />
+        <di:waypoint x="510" y="1030" />
+        <di:waypoint x="860" y="1030" />
+        <di:waypoint x="860" y="1005" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1wwkhf4_di" bpmnElement="Flow_1wwkhf4">
+        <di:waypoint x="510" y="885" />
+        <di:waypoint x="510" y="910" />
+        <di:waypoint x="860" y="910" />
+        <di:waypoint x="860" y="885" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_053ooj3_di" bpmnElement="Flow_053ooj3">
+        <di:waypoint x="510" y="775" />
+        <di:waypoint x="510" y="800" />
+        <di:waypoint x="860" y="800" />
+        <di:waypoint x="860" y="775" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ui1g7w_di" bpmnElement="Flow_0ui1g7w">
+        <di:waypoint x="510" y="655" />
+        <di:waypoint x="510" y="680" />
+        <di:waypoint x="860" y="680" />
+        <di:waypoint x="860" y="655" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1wn412p_di" bpmnElement="Flow_1wn412p">
+        <di:waypoint x="790" y="630" />
+        <di:waypoint x="835" y="630" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1o14mur_di" bpmnElement="Flow_1o14mur">
+        <di:waypoint x="790" y="750" />
+        <di:waypoint x="835" y="750" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_093ea30_di" bpmnElement="Flow_093ea30">
+        <di:waypoint x="790" y="860" />
+        <di:waypoint x="835" y="860" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1m4o87s_di" bpmnElement="Flow_1m4o87s">
+        <di:waypoint x="535" y="630" />
+        <di:waypoint x="690" y="630" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_09qz14d_di" bpmnElement="Flow_09qz14d">
+        <di:waypoint x="535" y="750" />
+        <di:waypoint x="690" y="750" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1q8vo4z_di" bpmnElement="Flow_1q8vo4z">
+        <di:waypoint x="535" y="860" />
+        <di:waypoint x="690" y="860" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_04hgavj_di" bpmnElement="Flow_04hgavj">
+        <di:waypoint x="410" y="835" />
+        <di:waypoint x="410" y="630" />
+        <di:waypoint x="485" y="630" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1x2w3a4_di" bpmnElement="Flow_1x2w3a4">
+        <di:waypoint x="410" y="835" />
+        <di:waypoint x="410" y="750" />
+        <di:waypoint x="485" y="750" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_10p7i7o_di" bpmnElement="Flow_10p7i7o">
+        <di:waypoint x="435" y="860" />
+        <di:waypoint x="485" y="860" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_09d4j0e_di" bpmnElement="Flow_09d4j0e">
+        <di:waypoint x="350" y="860" />
+        <di:waypoint x="385" y="860" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1jyhnla_di" bpmnElement="Flow_1jyhnla">
+        <di:waypoint x="410" y="885" />
+        <di:waypoint x="410" y="980" />
+        <di:waypoint x="485" y="980" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1yfhv9r_di" bpmnElement="Flow_1yfhv9r">
+        <di:waypoint x="535" y="1110" />
+        <di:waypoint x="690" y="1110" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_095jgk3_di" bpmnElement="Flow_095jgk3">
+        <di:waypoint x="535" y="980" />
+        <di:waypoint x="690" y="980" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_06ckm99_di" bpmnElement="Flow_06ckm99">
+        <di:waypoint x="790" y="980" />
+        <di:waypoint x="835" y="980" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ylcbua_di" bpmnElement="Flow_1ylcbua">
+        <di:waypoint x="440" y="407" />
+        <di:waypoint x="480" y="407" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_10odevp_di" bpmnElement="Flow_10odevp">
+        <di:waypoint x="306" y="407" />
+        <di:waypoint x="340" y="407" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1hoavbt_di" bpmnElement="Flow_1hoavbt">
+        <di:waypoint x="2510" y="1410" />
+        <di:waypoint x="2560" y="1410" />
+        <di:waypoint x="2560" y="1580" />
+        <di:waypoint x="2490" y="1580" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1sojyr7_di" bpmnElement="Flow_1sojyr7">
+        <di:waypoint x="2206" y="1410" />
+        <di:waypoint x="2250" y="1410" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_15i9jmj_di" bpmnElement="Flow_15i9jmj">
+        <di:waypoint x="1960" y="1530" />
+        <di:waypoint x="2181" y="1530" />
+        <di:waypoint x="2181" y="1435" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0x80cmi_di" bpmnElement="Flow_0x80cmi">
+        <di:waypoint x="1860" y="1310" />
+        <di:waypoint x="2181" y="1310" />
+        <di:waypoint x="2181" y="1385" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0o8666m_di" bpmnElement="Flow_0o8666m">
+        <di:waypoint x="1551" y="1435" />
+        <di:waypoint x="1551" y="1530" />
+        <di:waypoint x="1860" y="1530" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1658" y="1533" width="66" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_194ua6w_di" bpmnElement="Flow_194ua6w">
+        <di:waypoint x="1551" y="1385" />
+        <di:waypoint x="1551" y="1310" />
+        <di:waypoint x="1760" y="1310" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1588" y="1293" width="79" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0dw2wok_di" bpmnElement="Flow_0dw2wok">
+        <di:waypoint x="890" y="407" />
+        <di:waypoint x="972" y="407" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ya0v3h_di" bpmnElement="Flow_1ya0v3h">
+        <di:waypoint x="725" y="407" />
+        <di:waypoint x="790" y="407" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="754" y="389" width="13" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0vevh7b_di" bpmnElement="Flow_0vevh7b">
+        <di:waypoint x="700" y="432" />
+        <di:waypoint x="700" y="520" />
+        <di:waypoint x="300" y="520" />
+        <di:waypoint x="300" y="610" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="490" y="503" width="17" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1pjxpy5_di" bpmnElement="Flow_1pjxpy5">
+        <di:waypoint x="580" y="407" />
+        <di:waypoint x="675" y="407" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_19a7j35_di" bpmnElement="Flow_19a7j35">
+        <di:waypoint x="1370" y="900" />
+        <di:waypoint x="1370" y="1370" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ank57y_di" bpmnElement="Flow_0ank57y">
+        <di:waypoint x="1420" y="1410" />
+        <di:waypoint x="1526" y="1410" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_1e2pxec_di" bpmnElement="Activity_1ec38gs">
+        <dc:Bounds x="340" y="367" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1drf080_di" bpmnElement="Event_1drf080">
+        <dc:Bounds x="972" y="389" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="961" y="432" width="59" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1xa23y0_di" bpmnElement="Gateway_1xa23y0" isMarkerVisible="true">
+        <dc:Bounds x="675" y="382" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="672" y="352" width="56" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1l8weh0_di" bpmnElement="Activity_1v53jau">
+        <dc:Bounds x="480" y="367" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1k6y5cz_di" bpmnElement="PrescriptionRecieved">
+        <dc:Bounds x="270" y="389" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="259" y="432" width="59" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1egb77p_di" bpmnElement="Activity_0layi00">
+        <dc:Bounds x="790" y="367" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1cfk9kc_di" bpmnElement="Activity_1lzngm7">
+        <dc:Bounds x="250" y="820" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1t9619s_di" bpmnElement="Gateway_1uyi2kx">
+        <dc:Bounds x="385" y="835" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0z8ig8u_di" bpmnElement="Gateway_0z8ig8u" isMarkerVisible="true">
+        <dc:Bounds x="485" y="835" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_06zbvoy_di" bpmnElement="Gateway_1h09yco">
+        <dc:Bounds x="915" y="835" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1032" y="666" width="57" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1ud7li2_di" bpmnElement="Gateway_1ud7li2" isMarkerVisible="true">
+        <dc:Bounds x="485" y="955" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_04kq5de_di" bpmnElement="Gateway_04kq5de" isMarkerVisible="true">
+        <dc:Bounds x="485" y="1085" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_02bfix1_di" bpmnElement="Activity_1tfqwe0">
+        <dc:Bounds x="690" y="940" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_142598r_di" bpmnElement="Activity_142598r">
+        <dc:Bounds x="690" y="1070" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_10wfgm8_di" bpmnElement="Activity_10wfgm8">
+        <dc:Bounds x="690" y="820" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0jmmyhv_di" bpmnElement="Activity_0jmmyhv">
+        <dc:Bounds x="690" y="710" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0wunize_di" bpmnElement="Activity_0wunize">
+        <dc:Bounds x="690" y="590" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1e73tg4_di" bpmnElement="Gateway_1e73tg4" isMarkerVisible="true">
+        <dc:Bounds x="485" y="725" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_18d65lv_di" bpmnElement="Gateway_18d65lv" isMarkerVisible="true">
+        <dc:Bounds x="485" y="605" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1s9wnr7_di" bpmnElement="Gateway_1s9wnr7" isMarkerVisible="true">
+        <dc:Bounds x="835" y="1085" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0kwqyq9_di" bpmnElement="Gateway_0kwqyq9" isMarkerVisible="true">
+        <dc:Bounds x="835" y="955" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_092j603_di" bpmnElement="Gateway_092j603" isMarkerVisible="true">
+        <dc:Bounds x="835" y="835" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1mfpvaf_di" bpmnElement="Gateway_1mfpvaf" isMarkerVisible="true">
+        <dc:Bounds x="835" y="725" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0sdmunl_di" bpmnElement="Gateway_0sdmunl" isMarkerVisible="true">
+        <dc:Bounds x="835" y="605" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ju3lw1_di" bpmnElement="Activity_0dwennu">
+        <dc:Bounds x="250" y="610" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1mt7dw8_di" bpmnElement="Gateway_1mt7dw8" isMarkerVisible="true">
+        <dc:Bounds x="1526" y="1385" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1585" y="1403" width="62" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0c7fup2_di" bpmnElement="Gateway_0c7fup2" isMarkerVisible="true">
+        <dc:Bounds x="2156" y="1385" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1e5nbts_di" bpmnElement="Activity_0chx018">
+        <dc:Bounds x="1760" y="1270" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0srgjwy_di" bpmnElement="Activity_1jh0gzz">
+        <dc:Bounds x="1860" y="1490" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0izx40j_di" bpmnElement="Activity_1aqt8fu">
+        <dc:Bounds x="1010" y="820" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_07emz9h_di" bpmnElement="Activity_13g8s2x">
+        <dc:Bounds x="2410" y="1370" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0aaz5hf_di" bpmnElement="Activity_0718j1p">
+        <dc:Bounds x="2250" y="1370" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1hgfj1c_di" bpmnElement="Event_1hgfj1c">
+        <dc:Bounds x="2252" y="1562" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2250" y="1605" width="41" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0hxigeh_di" bpmnElement="Activity_0hxigeh">
+        <dc:Bounds x="2390" y="1540" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1yz1bs4_di" bpmnElement="Activity_00z82ls">
+        <dc:Bounds x="1320" y="820" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1kpc1k0_di" bpmnElement="Activity_0j1pnri">
+        <dc:Bounds x="1320" y="1370" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Participant_1wh01v7_di" bpmnElement="Participant_1qv7ij9" isHorizontal="true">
+        <dc:Bounds x="190" y="80" width="1220" height="60" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Participant_0wwav3x_di" bpmnElement="Participant_01kji1n" isHorizontal="true">
+        <dc:Bounds x="1680" y="80" width="300" height="60" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Participant_0z3nakl_di" bpmnElement="Participant_111plzh" isHorizontal="true">
+        <dc:Bounds x="2060" y="80" width="300" height="60" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0n15nx8_di" bpmnElement="Flow_0n15nx8">
+        <di:waypoint x="288" y="140" />
+        <di:waypoint x="288" y="389" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0i2vns8_di" bpmnElement="Flow_0i2vns8">
+        <di:waypoint x="840" y="367" />
+        <di:waypoint x="840" y="140" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1eg3r5w_di" bpmnElement="Flow_1eg3r5w">
+        <di:waypoint x="1370" y="820" />
+        <di:waypoint x="1370" y="140" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1q8pp3f_di" bpmnElement="Flow_1q8pp3f">
+        <di:waypoint x="1810" y="1270" />
+        <di:waypoint x="1810" y="140" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_14myucx_di" bpmnElement="Flow_14myucx">
+        <di:waypoint x="1910" y="1490" />
+        <di:waypoint x="1910" y="1260" />
+        <di:waypoint x="2070" y="1260" />
+        <di:waypoint x="2070" y="140" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
