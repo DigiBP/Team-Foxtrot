@@ -1,0 +1,26 @@
+[
+  {
+    "value": "abc",
+    "synonyms": [
+      "abc"
+    ]
+  },
+  {
+    "value": "xyz",
+    "synonyms": [
+      "xyz"
+    ]
+  },
+  {
+    "value": "klm",
+    "synonyms": [
+      "klm"
+    ]
+  },
+  {
+    "value": "def",
+    "synonyms": [
+      "def"
+    ]
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "id": "929d2def-2a61-4675-98fb-aed35a208dc3",
+  "name": "Status",
+  "isOverridable": true,
+  "isEnum": false,
+  "isRegexp": false,
+  "automatedExpansion": false,
+  "allowFuzzyExtraction": false
+}

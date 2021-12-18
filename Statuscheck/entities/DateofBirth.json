@@ -1,0 +1,9 @@
+{
+  "id": "ce2d80ed-be20-4c82-ac68-99dba55dd899",
+  "name": "DateofBirth",
+  "isOverridable": true,
+  "isEnum": false,
+  "isRegexp": false,
+  "automatedExpansion": true,
+  "allowFuzzyExtraction": false
+}

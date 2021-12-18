@@ -1,0 +1,90 @@
+{
+  "id": "e7da8001-5019-4a76-969e-83c3cf0bf38a",
+  "name": "Asking for Status",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "",
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "2e3fa005-3e9c-4ac1-b7e0-ef25138943ae",
+          "name": "GivenName",
+          "required": true,
+          "dataType": "@sys.given-name",
+          "value": "$FirstName",
+          "defaultValue": "",
+          "isList": false,
+          "prompts": [
+            {
+              "lang": "en",
+              "value": "Please enter the patient\u0027s first name."
+            }
+          ],
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": []
+        },
+        {
+          "id": "38571591-b38b-47bd-b86c-b888fe808546",
+          "name": "Surname",
+          "required": true,
+          "dataType": "@sys.last-name",
+          "value": "$LastName",
+          "defaultValue": "",
+          "isList": false,
+          "prompts": [
+            {
+              "lang": "en",
+              "value": "What is the patient\u0027s last name?"
+            }
+          ],
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": []
+        },
+        {
+          "id": "850862e4-7d8a-4b31-aaf5-a3d801360b60",
+          "name": "DateofBirth",
+          "required": true,
+          "dataType": "@DateofBirth",
+          "value": "$DateofBirth",
+          "defaultValue": "",
+          "isList": false,
+          "prompts": [
+            {
+              "lang": "en",
+              "value": "What is the Patient\u0027s Date of Birth?"
+            }
+          ],
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": []
+        }
+      ],
+      "messages": [
+        {
+          "type": "0",
+          "title": "",
+          "textToSpeech": "",
+          "lang": "en",
+          "condition": ""
+        }
+      ],
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

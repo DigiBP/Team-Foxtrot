@@ -1,0 +1,43 @@
+[
+  {
+    "id": "6da15601-8a4a-4b58-b60b-4562371258f5",
+    "data": [
+      {
+        "text": "10.10.2010",
+        "meta": "@DateofBirth",
+        "alias": "DateofBirth",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "lang": "en",
+    "updated": 0
+  },
+  {
+    "id": "bfc03ebc-43d2-41c2-b1f3-0fcb1cbf7f70",
+    "data": [
+      {
+        "text": "What is the Status of the patient order?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "lang": "en",
+    "updated": 0
+  },
+  {
+    "id": "983944b5-2442-4bb0-aec8-7139dc34d37d",
+    "data": [
+      {
+        "text": "Status Check",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "lang": "en",
+    "updated": 0
+  }
+]
