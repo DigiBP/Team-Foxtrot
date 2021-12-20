@@ -1,6 +1,6 @@
 # Team-Foxtrot
 
-##### Mila, Swathi, Tanja
+##### Sharmila Selvanayakam, Swathi Ravula, Tanja Plagemann
 
 ## Lab order automation  
 
